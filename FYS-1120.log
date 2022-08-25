@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.5)  23 AUG 2022 21:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.5)  25 AUG 2022 09:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/oskar/OneDrive/Dokumenter/GitHub/Privat/FYS-1120/FYS-1120.tex
-(c:/Users/oskar/OneDrive/Dokumenter/GitHub/Privat/FYS-1120/FYS-1120.tex
+**c:/Users/oskar/LaTeX_test/FYS-1120.tex
+(c:/Users/oskar/LaTeX_test/FYS-1120.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21> (C:\Users\oskar\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
 Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
@@ -1015,22 +1015,89 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--17
 
  []
 
-) [3 <./Bilder/Coulombs_lov.png>] (FYS-1120.aux)
+[3 <./Bilder/Coulombs_lov.png>]
+<Bilder/Eksempel_Krefter_paa_ladning.png, id=36, 561.89925pt x 320.99925pt>
+File: Bilder/Eksempel_Krefter_paa_ladning.png Graphic file (type png)
+<use Bilder/Eksempel_Krefter_paa_ladning.png>
+Package pdftex.def Info: Bilder/Eksempel_Krefter_paa_ladning.png  used on input line 26.
+(pdftex.def)             Requested size: 393.32678pt x 224.69794pt.
+
+Overfull \hbox (12.6289pt too wide) in paragraph at lines 26--27
+ [][] 
+ []
+
+[4 <./Bilder/Eksempel_Krefter_paa_ladning.png>]
+<Bilder/Ladninger_i_felt.png, id=48, 379.4175pt x 404.10976pt>
+File: Bilder/Ladninger_i_felt.png Graphic file (type png)
+<use Bilder/Ladninger_i_felt.png>
+Package pdftex.def Info: Bilder/Ladninger_i_felt.png  used on input line 63.
+(pdftex.def)             Requested size: 265.59042pt x 282.8749pt.
+ [5 <./Bilder/Ladninger_i_felt.png>]
+File: Bilder/Eksempel_Krefter_paa_ladning.png Graphic file (type png)
+<use Bilder/Eksempel_Krefter_paa_ladning.png>
+Package pdftex.def Info: Bilder/Eksempel_Krefter_paa_ladning.png  used on input line 83.
+(pdftex.def)             Requested size: 393.32678pt x 224.69794pt.
+
+Overfull \hbox (12.6289pt too wide) in paragraph at lines 83--84
+ [][] 
+ []
+
+<Bilder/Eksempel_Dipol.png, id=56, 536.60475pt x 295.70474pt>
+File: Bilder/Eksempel_Dipol.png Graphic file (type png)
+<use Bilder/Eksempel_Dipol.png>
+Package pdftex.def Info: Bilder/Eksempel_Dipol.png  used on input line 98.
+(pdftex.def)             Requested size: 214.63809pt x 118.27979pt.
+[6 <./Bilder/Eksempel_Dipol.png>]
+<Bilder/Kontinuerlige_ladningsfordelinger.png, id=66, 466.74374pt x 350.5095pt>
+File: Bilder/Kontinuerlige_ladningsfordelinger.png Graphic file (type png)
+<use Bilder/Kontinuerlige_ladningsfordelinger.png>
+Package pdftex.def Info: Bilder/Kontinuerlige_ladningsfordelinger.png  used on input line 121.
+(pdftex.def)             Requested size: 326.71838pt x 245.35498pt.
+<Bilder/3D_Ladningstetthet.png, id=67, 564.9105pt x 199.34476pt>
+File: Bilder/3D_Ladningstetthet.png Graphic file (type png)
+<use Bilder/3D_Ladningstetthet.png>
+Package pdftex.def Info: Bilder/3D_Ladningstetthet.png  used on input line 136.
+(pdftex.def)             Requested size: 395.43465pt x 139.54036pt.
+
+Overfull \hbox (14.73677pt too wide) in paragraph at lines 136--137
+ [][] 
+ []
+
+<Bilder/2D_Ladningstetthet.png, id=68, 527.571pt x 221.02576pt>
+File: Bilder/2D_Ladningstetthet.png Graphic file (type png)
+<use Bilder/2D_Ladningstetthet.png>
+Package pdftex.def Info: Bilder/2D_Ladningstetthet.png  used on input line 143.
+(pdftex.def)             Requested size: 316.54504pt x 132.61647pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7 <./Bilder/Kontinuerlige_ladningsfordelinger.png>]
+<Bilder/1D_Ladningstetthet.png, id=80, 425.1885pt x 190.91325pt>
+File: Bilder/1D_Ladningstetthet.png Graphic file (type png)
+<use Bilder/1D_Ladningstetthet.png>
+Package pdftex.def Info: Bilder/1D_Ladningstetthet.png  used on input line 154.
+(pdftex.def)             Requested size: 255.11507pt x 114.54883pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+
+ []
+
+[8 <./Bilder/3D_Ladningstetthet.png> <./Bilder/2D_Ladningstetthet.png> <./Bilder/1D_Ladningstetthet.png>]) [9] (FYS-1120.aux)
 Package rerunfilecheck Info: File `FYS-1120.out' has not changed.
 (rerunfilecheck)             Checksum: F44E9D1B557539CDF1249317C9CBA793;116.
  ) 
 Here is how much of TeX's memory you used:
- 43431 strings out of 478593
- 974264 string characters out of 2844605
- 1420060 words of memory out of 3000000
- 60891 multiletter control sequences out of 15000+600000
- 478483 words of font info for 68 fonts, out of 8000000 for 9000
+ 43521 strings out of 478593
+ 976405 string characters out of 2844605
+ 1429805 words of memory out of 3000000
+ 60954 multiletter control sequences out of 15000+600000
+ 478790 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,7n,94p,789b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-<C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on FYS-1120.pdf (3 pages, 124883 bytes).
+ 99i,8n,94p,757b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\oskar\AppData\Local\MiKTeX\fonts/pk/ljfour/public/esint/dpi600\esint10.pk><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/oskar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on FYS-1120.pdf (9 pages, 507338 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 166 PDF objects out of 1000 (max. 8388607)
+ 27 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

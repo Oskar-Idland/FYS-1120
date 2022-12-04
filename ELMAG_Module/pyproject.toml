@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
-name = "ELMAG_Module_Oskar_Idland"
-version = "0.0.1"
+name = "OskarFieldModule"
+version = "0.2.2"
 authors = [
   { name="Oskar Idland", email="oskaridland@hotmail.com" },
 ]
@@ -18,5 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = ""
-"Bug Tracker" = ""
+"Homepage" = "https://github.com/Oskar-Idland/FYS-1120/tree/main/ELMAG_Module"
+"Bug Tracker" = "https://github.com/Oskar-Idland/FYS-1120/tree/main/ELMAG_Module"

@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+src/Field.py
+src/__init__.py
+src/FYS1120FieldModule.egg-info/PKG-INFO
+src/FYS1120FieldModule.egg-info/SOURCES.txt
+src/FYS1120FieldModule.egg-info/dependency_links.txt
+src/FYS1120FieldModule.egg-info/top_level.txt

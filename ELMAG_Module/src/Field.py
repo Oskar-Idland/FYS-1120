@@ -11,6 +11,8 @@ class Field():
     # General Info
     Class for calculating and plotting electromagnetic fields and potentials in 3d. Requires numba and numpy\n\n
     
+    # Functions
+    
     ## Efield, Epot
     Field and potential from point charge\n
     efieldLine, epotLine - Field and potential from line charge parallel to x, y or z axis. Can be placed anywhere in 3D\n
@@ -30,10 +32,13 @@ class Field():
     
     ## PlotContour
     Plots vector field. Customize colorscheme, levels, norm and figsize\n
+    
+    ## PlotCircle
+    Plots circle just using radius
         
     # See example code below:
     
-    ## Single Point Charge Example
+    ## Single Point Charge
         
     >>> L = 2
     >>> N = 10
@@ -134,12 +139,17 @@ class Field():
     def Efield(r: np.ndarray, particle_pos: np.ndarray, q: float, eps = 8.854187817E-12) -> np.ndarray:
         '''
         Calculates electric field from point charge\n
+        
+        ## Input
         r - [x,y,z] Point of observation\n
         particle_pos - [x,y,z] particle position\n
         q - [float] Charge of particle\n
-        ϵ - Permittivity\n\n
         
-        Returns: 3D array
+        ### Optional
+        ϵ - Permittivity\n
+        
+        ## Returns
+        3D array
         '''
         
         ϵ = eps
@@ -154,15 +164,20 @@ class Field():
     @classmethod
     def CalculateEfield(cls, L: float, N: int, Q: list, R: np.ndarray, plane: str, eps: float = 8.854187817E-12) -> np.ndarray:
         '''
-        Calculates electric field from point charge\n
+        Calculates electric field from one or more point charges\n
+        
+        ## Input
         L - [float] Length of side of cube area calculated\n
         N - [int] Number of points in the meshgrid\n
         Q - [list] List of each particles charge. Must be nested (see example code)\n
         R - [ndarray] List of each particles position in 3D. Must be nested (see example code)\n
         plane [str] - Plane of interest for plotting. 
-        ϵ - Permittivity, default being ϵ_0\n\n
         
-        Returns: r1, r2, E1, E2
+        ### Optional
+        ϵ - Permittivity, default being ϵ_0\n
+        
+        ## Returns
+        r1, r2, E1, E2
         '''
         
         if plane not in ['xy', 'xz', 'yz']:
@@ -216,12 +231,17 @@ class Field():
     def Epot(r: np.ndarray, particle_pos: np.ndarray, q: float, eps = 8.854187817E-12) -> np.ndarray:
         '''
         Calculates electric potential from point charge\n
+        
+        ## Input
         r - [x,y,z] Point of observation\n
         particle_pos - [x,y,z] particle position\n
         q - [float] Charge of particle\n
-        ϵ - Permittivity\n\n
         
-        Returns: 3D array
+        ### Optional
+        ϵ - Permittivity\n
+        
+        ## Returns
+        3D array
         '''
         ϵ = eps
         
@@ -232,15 +252,21 @@ class Field():
     @classmethod
     def CalculateEpot(cls, L: float, N: int, Q: list, R: list, plane: str, eps: float = 8.854187817E-12) -> np.ndarray:
         '''
-        Calculates electric potential from point charge\n
+        Calculates electric potential from one or more point charges\n
+        
+        ## Input
         L - [float] Length of side of cube area calculated\n
         N - [int] Number of points in the meshgrid\n
         Q - [list] List of each particle's charge. Must be nested (see example code)\n
         R - [ndarray] List of each particle's position in 3D. Must be nested (see example code)\n
         plane [str] - Plane of interest for plotting\n
-        ϵ - Permittivity, default being ϵ_0\n\n
         
-        Returns: r1, r2, V
+        ### Optional
+        ϵ - Permittivity, default being ϵ_0\n
+        
+        
+        ## Returns
+        r1, r2, V
         '''
         
         if plane not in ['xy', 'xz', 'yz']:
@@ -293,17 +319,23 @@ class Field():
     def EfieldLine(r: np.ndarray, q: float, line_length: float, axis: str, x: float = 0, y: float = 0, z: float = 0, eps: float = 8.854187817E-12, N: int = 100) -> np.ndarray:
         '''
         Calculates electric field from line charge parallel with either x, y or z axis\n
+        
+        ## Input
         r - [x,y,z] Point of observation\n
         q - [float] Charge of particle\n
         line_length - Length of charged line\n
         axis - ("x", "y" or "z") Axis which line charge is parallel\n
-        x - x coordinate of line center\n
-        y - y coordinate of line center\n
-        z - z coordinate of line center\n
-        N - Accuracy, the higher the better, but slower. Default is 100\n
-        ϵ - Permittivity, default is vacuum\n\n
         
-        Returns: 3D array
+        ### Optional
+        x - x coordinate of line center, default is 0\n
+        y - y coordinate of line center, default is 0\n
+        z - z coordinate of line center, default is 0\n
+        N - Accuracy, the higher the better, but slower. Default is 100\n
+        ϵ - Permittivity, default is vacuum\n
+        
+        
+        ## Returns
+        3D array
         '''
         ϵ = eps
         
@@ -343,18 +375,25 @@ class Field():
 
 
     @classmethod
-    def CalculateEfieldLine(cls, L: float, N: int, line_charges: list, line_lengths: list, line_center_coords: list, axis: str, plane: str, eps = 8.854187817E-12, n = 100) -> np.ndarray:
+    def CalculateEfieldLine(cls, L: float, N: int, line_charges: list, line_lengths: list, line_center_coords: list, axis: list, plane: str, eps = 8.854187817E-12, n = 100) -> np.ndarray:
         '''
-        Calculates electric field from line charge\n
+        Calculates electric field from one or more line charges\n
+        
+        ## Input
         L - [float] Length of side of cube area calculated\n
         N - [int] Number of points in the meshgrid\n
         line_charges - [list] List of each line's charge. Must be nested (see example code)\n
         line_lengths - [list] List of each line's length\n
         line_center_coords - [list] List of each particle's position in 3D. Must be nested (see example code)\n
+        axis - [list] List of which axis each line is runs parallel\n
         plane [str] - Plane of interest for plotting\n
-        ϵ - Permittivity, default being ϵ_0\n\n
         
-        Returns: r1, r2, E1, E2
+        ### Optional
+        ϵ - Permittivity, default being ϵ_0\n
+        
+        
+        ## Returns
+        r1, r2, E1, E2
         '''
         
         if plane not in ['xy', 'xz', 'yz']:
@@ -406,18 +445,24 @@ class Field():
     @njit
     def EpotLine(r: np.ndarray, q: float, line_length: float, axis: str, x: float = 0, y: float = 0, z: float = 0, eps: float = 8.854187817E-12, N: int = 100) -> np.ndarray:
         '''
-        Calculates electric potential from line charge parallel with either x, y or z axis 
+        Calculates electric potential from line charge parallel with either x, y or z axis \n
+        
+        ## Input
         r - [x,y,z] Point of observation\n
         q - [float] Charge of particle\n
         line_length - Length of charged line\n
         axis - ("x", "y" or "z") Axis which line charge is parallel\n
+        
+        ### Optional
         x - x coordinate of line center\n
         y - y coordinate of line center\n
         z - z coordinate of line center\n
         N - Accuracy, the higher the better, but slower. Default is 100\n
-        ϵ - Permittivity, default is vacuum\n\n
+        ϵ - Permittivity, default is vacuum\n
         
-        Returns: 3D array
+        
+        ## Returns
+        3D array
         '''
         ϵ = eps
         
@@ -458,17 +503,23 @@ class Field():
     @classmethod
     def CalculateEpotLine(cls, L: float, N: int, line_charges: list, line_lengths: list, line_center_coords: list, axis: str, plane: str, eps = 8.854187817E-12, n = 100) -> np.ndarray:
         '''
-        Calculates electric potential from line charge\n
+        Calculates electric potential from one or more line charges\n
+        
+        ## Input
         L - [float] Length of side of cube area calculated\n
         N - [int] Number of points in the meshgrid\n
         line_charges - [list] List of each line's charge. Must be nested (see example code)\n
         line_lengths - [list] List of each line's length\n
         line_center_coords - [list] List of each particle's position in 3D. Must be nested (see example code)\n
         plane [str] - Plane of interest for plotting\n
-        ϵ - Permittivity, default being ϵ_0\n
-        n - [int] How small pieces to divide the line, default being 100\n\n
         
-        Returns: r1, r2, V
+        ### Optional
+        ϵ - Permittivity, default being ϵ_0\n
+        n - [int] How small pieces to divide the line, default being 100\n
+        
+        
+        ## Returns
+        r1, r2, V
         '''
         
         if plane not in ['xy', 'xz', 'yz']:
@@ -519,14 +570,20 @@ class Field():
     def EfieldCircle(r: np.ndarray, q: float, rad: float, plane: str, eps = 8.854187817E-12, N = 100) -> np.ndarray:
         '''
         Calculates electric field from circular charge centered in origin\n
+        
+        ## Input
         r - [x,y,z] Point of observation\n
         q - [float] Charge of circle\n
         rad - [float] Radius of the circle\n
-        plane - [str] Plane of the circle
+        plane - [str] Plane of the circle\n
+        
+        ### Optional
         ϵ - Permittivity, default is vacuum\n
         N - Accuracy, the higher the better, but slower. Default is 100\n\n
         
-        Returns: 3D array
+        
+        ## Returns
+        3D array
         '''
         ϵ = eps
         
@@ -574,17 +631,23 @@ class Field():
     @classmethod
     def CalculateEfieldCircle(cls, L: float, N: int, circle_charges: list,  radii: list, plane: str, plane_circles: list, eps: float = 8.854187817E-12, n: int = 100) -> np.ndarray:
         '''
-        Calculates electric field from circular charge centered around origin\n
+        Calculates electric field from one or more circular charges centered around origin\n
+        
+        ## Input
         L - [float] Length of side of cube area calculated\n
         N - [int] Number of points in the meshgrid\n
         circle_charges - [list] List of each circle's charge. Must be nested (see example code)\n
         radii - [list] List of each circle's radius\n
         plane - [str] Plane of interest for plotting\n
         plane_circles - [str] Plane of the circle\n
-        ϵ - Permittivity, default being ϵ_0\n
-        n - [int] How small pieces to divide the line, default being 100\n\n
         
-        Returns: r1, r2, E1, E2
+        ### Optional
+        ϵ - Permittivity, default being ϵ_0\n
+        n - [int] How small pieces to divide the line, default being 100\n
+        
+        
+        ## Returns
+        r1, r2, E1, E2
         '''
         
         if plane not in ['xy', 'xz', 'yz']:
@@ -639,13 +702,19 @@ class Field():
     def EpotCircle(r: np.ndarray, q: float, rad: float, plane: str, eps: float = 8.854187817E-12, N: int = 100) -> np.ndarray:
         '''
         Calculates electric potential from circular charge centered in origin\n
+        
+        ## Input
         r - [x,y,z] Point of observation\n
         q - [float] Charge of circle\n
         rad - [float] Radius of the circle\n
-        N - Accuracy, the higher the better, but slower. Default is 100\n
-        ϵ - Permittivity, default is vacuum\n\n
         
-        Returns: 3D array
+        ### Optional
+        N - Accuracy, the higher the better, but slower. Default is 100\n
+        ϵ - Permittivity, default is vacuum\n
+        
+        
+        ## Returns
+        3D array
         '''
         ϵ = eps
         
@@ -699,17 +768,23 @@ class Field():
     @classmethod
     def CalculateEpotCircle(cls, L: float, N: int, circle_charges: list,  radii: list, plane: str, plane_circles: list, eps: float = 8.854187817E-12, n: int = 100) -> np.ndarray:
         '''
-        Calculates electric potential from circular charge centered around origin\n
+        Calculates electric potential from one or more circular charges centered around origin\n
+        
+        ## Input
         L - [float] Length of side of cube area calculated\n
         N - [int] Number of points in the meshgrid\n
         circle_charges - [list] List of each circle's charge. Must be nested (see example code)\n
         radii - [list] List of each circle's radius\n
         plane - [str] Plane of interest for plotting\n
         plane_circles - [list] List of the plane to place the circle\n
+        
+        ### Optional
         ϵ - Permittivity, default being ϵ_0\n
         n - [int] How small pieces to divide the line, default being 100\n\n
         
-        Returns: r1, r2, V
+        
+        ## Returns
+        r1, r2, V
         '''
 
         if plane not in ['xy', 'xz', 'yz']:
@@ -760,17 +835,21 @@ class Field():
     def BfieldLine(r: np.ndarray, line_length: float, I: float, axis: str, x: float = 0, y: float = 0, z: float = 0, mu: float = 4*np.pi*1E-7, N: int = 100) -> np.ndarray:
         '''
         Calculates magnetic field from line current parallel to x, y or z axis. Can be placed anywhere in 3D\n
+        
+        ## Input
         r - [x,y,z] Point of observation\n
         line_length - Length of the line\n
         I - Magnitude of current\n
         axis - ('x', 'y' or 'z') Which axis line runs parallel\n
         x, y, z - How much to shift the line in x, y or z direction\n
+        
+        ### Optional
         μ - Permeability of magnetic field, vacuum being default\n
         N - Accuracy, the higher the better, but slower. Default is 100\n\n
         
-        Returns: 3D array\n\n
         
-        Returns: r1, r2, B1, B2
+        ## Returns
+        3D array
         '''
         μ = mu
         B = np.zeros(3)
@@ -813,18 +892,24 @@ class Field():
     @classmethod
     def CalculateBfieldLine(cls, L: float, N: int, line_currents: list, line_lengths: list, line_center_coords: list, axis: list, plane: str, mu: float = 4*np.pi*1E-12, n: float = 100) -> np.ndarray:
         '''
-        Calculates magnetic field from line charge\n
+        Calculates magnetic field from one or more lines charge\n
+        
+        ## Input
         L - [float] Length of side of cube area calculated\n
         N - [int] Number of points in the meshgrid\n
-        line_current - [list] List of each line's current. Must be nested (see example code)\n
+        line_current - [list] List of the magnitude of each line's current. Must be nested (see example code)\n
         line_lengths - [list] List of each line's length
         line_center_coords - [list] List of each lines's center position in 3D. Must be nested (see example code)\n
         axis - [list] List containing axis each line runs parallel\n
         plane [str] - Plane of interest for plotting\n
+        
+        ### Optional
         μ - Permittivity, default being μ_0\n
         n - [int] How small pieces to divide the line, default being 100\n\n
         
-        Returns: r1, r2, B1, B2
+        
+        ## Returns
+        r1, r2, B1, B2
         '''
         
         if plane not in ['xy', 'xz', 'yz']:
@@ -879,14 +964,20 @@ class Field():
     def BfieldCircle(r: np.ndarray, I: float, rad: float, plane: str, mu: float = 4*np.pi*1E-7, N: float = 100) -> np.ndarray:
         '''
         Calculates magnetic field from circular current centered in origin in the xy, xz or yz plane in 3D\n
+        
+        ## Input
         r - [x,y,z] Point of observation\n
         I - Magnitude of current\n
         rad - [float] Radius of the the circle\n
         plane - [str] Plane of the circle\n
-        μ - Permeability of magnetic field, μ_0 being default\n
-        N - Accuracy, the higher the better, but slower. Default is 100\n\n
         
-        Returns: 3D array
+        ### Optional
+        μ - Permeability of magnetic field, μ_0 being default\n
+        N - Accuracy, the higher the better, but slower. Default is 100\n
+        
+        
+        ## Returns
+        3D array
         '''
         
         if plane == 'xy':
@@ -931,17 +1022,23 @@ class Field():
     @classmethod
     def CalculateBfieldCircle(cls, L: float, N: int, circle_currents: list, radii: list, plane: str, circle_planes: list, mu: float = 4*np.pi*1E-7, n: int = 100) -> np.ndarray:
         '''
-        Calculates magnetic field from line charge\n
+        Calculates magnetic field from one or more circular currents\n
+        
+        ## Input
         L - [float] Length of side of cube area calculated\n
         N - [int] Number of points in the meshgrid\n
         line_currents - [list] List of each circle's current. Must be nested (see example code)\n
         radii - [list] List of each circle's radii\n
         plane [str] - Plane of interest for plotting\n
         circle_planes - [list] List of which plane to place each circle\n
+        
+        ### Optional
         μ - Permittivity, default being μ_0\n
         n - [int] How small pieces to divide the line, default being 100\n\n
         
-        Returns: r1, r2, B1, B2
+        
+        ## Returns
+        r1, r2, B1, B2
         '''
         
         if plane not in ['xy', 'xz', 'yz']:
@@ -995,26 +1092,32 @@ class Field():
 
         
     @staticmethod
-    def PlotVector(x1, x2, u, v, type, title = '', figsize=(16,9), broken_streamlines = True, density = 1, cmap = 'cool', equal = False, show = False, log10 = True) -> None:
+    def PlotVector(r1: np.ndarray, r2: np.ndarray, U1: np.ndarray, U2: np.ndarray, type: str, title: str = '', figsize: tuple = (16,9), broken_streamlines: bool = True, density: float = 1, cmap: str = 'cool', equal: bool = False, show: bool = False, log10: bool = True) -> None:
         '''
         Function which plots vector\n
-        x1, x2 - Arrays containing the meshgrid\n
-        u, v - Arrays containing the values of the vectors at each point in the grid\n
-        type - ('stream', 'quiver') Choose whether to do a streamplot or quiver\n
-        title - title of the plot\n
-        figsize - (M, N) size of the plot, default is (16,9)\n
-        broken_streamlines = Default is True\n
-        density - How dense the plot will be filled, default is 1\n
-        cmap - Color map to use, default is 'cool'\n
-        equal - Wether to set axis equal, default is False \n
-        show - Whether to show the figure, default is False\n
-        log10 - If to use log10 of colors. Makes for a smoother transition, default is True\n\n
         
-        Returns: None
+        ## Input
+        r1, r2 - Arrays containing the meshgrid\n
+        U1, U1 - Arrays containing the values of the vectors at each point in the grid\n
+        type - ('stream', 'quiver') Choose whether to do a streamplot or quiver\n
+        
+        ### Optional
+        title - [str] title of the plot\n
+        figsize - [tuple] (M, N) size of the plot, default is (16,9)\n
+        broken_streamlines - [bool] Default is True\n
+        density - [float] How dense the plot will be filled, default is 1\n
+        cmap - [str] Color map to use, default is 'cool'\n
+        equal - [bool] Wether to set axis equal, default is False \n
+        show - [bool] Whether to show the figure, default is False\n
+        log10 - [bool] If to use log10 of colors. Makes for a smoother transition, default is True\n
+        
+        
+        ## Returns
+        None
         '''
-        mag = np.sqrt(u**2 + v**2)
-        U = u/mag
-        V = v/mag
+        mag = np.sqrt(U1**2 + U2**2)
+        U = U1/mag
+        V = U2/mag
         if log10:
             color = np.log10(mag)
         else:
@@ -1025,18 +1128,18 @@ class Field():
         if type == 'stream':
             
             if broken_streamlines:       
-                plt.streamplot(x1, x2, U, V, density = density, color = color, cmap = cmap)
+                plt.streamplot(r1, r2, U, V, density = density, color = color, cmap = cmap)
                 plt.title(title)
                 plt.colorbar()
                 
             else:
-                plt.streamplot(x1, x2, U, V, broken_streamlines = False, density = density, color = color, cmap = cmap)
+                plt.streamplot(r1, r2, U, V, broken_streamlines = False, density = density, color = color, cmap = cmap)
                 plt.title(title)
                 plt.colorbar()
 
             
         elif type == 'quiver':
-            plt.quiver(x1, x2, U, V, color, cmap = cmap)
+            plt.quiver(r1, r2, U, V, color, cmap = cmap)
             plt.title(title)
             plt.colorbar() 
             
@@ -1051,30 +1154,48 @@ class Field():
 
         
     @staticmethod
-    def PlotContour(x1, x2, V, title = '', figsize = (16,9), levels = 200, norm = 'symlog', cmap = 'inferno', equal = False, show = False) -> None:
+    def PlotContour(r1: np.ndarray, r2: np.ndarray, V: np.ndarray, title: str = '', figsize: tuple = (16,9), levels: int = 200, norm: str = 'symlog', cmap: str = 'inferno', equal: bool = False, show: bool = False) -> None:
         '''
         Function which plots potential\n
-        x1, x2 - Arrays containing the meshgrid\n
-        V - Array containing the values of the potential at each point in the grid\n
-        title - title of the plot\n
-        figsize - (M, N) size of the plot, default is (16,9)\n
-        levels - How many the contour plot will show, default is 200
-        density - How dense the plot will be filled, default is 1\n
-        norm - Scale of contour, default is 'symlog'\n
-        cmap - Color map to use, default is 'cool'\n
-        equal - Wether to set axis equal, default is False \n
-        show - Whether to show the figure, default is False\n\n
         
-        Returns: None
+        ## Input
+        r1, r2 - Arrays containing the meshgrid\n
+        V - Array containing the values of the potential at each point in the grid\n
+        
+        ### Optional
+        title - [str] title of the plot\n
+        figsize - [tuple] (M, N) size of the plot, default is (16,9)\n
+        levels - [int] How many the contour plot will show, default is 200\n
+        norm - [str] Scale of contour, default is 'symlog'\n
+        cmap - [str] Color map to use, default is 'cool'\n
+        equal - [bool] Wether to set axis equal, default is False \n
+        show - [bool] Whether to show the figure, default is False\n
+        
+        
+        ## Returns
+        None
         '''
         
         plt.figure(figsize = figsize)
         if equal:
             plt.axis('equal')
-        plt.contour(x1, x2, V, levels = levels, norm = norm, cmap = cmap)
-        plt.contourf(x1, x2, V, levels = levels, norm = norm, cmap = cmap)
+        plt.contour(r1, r1, V, levels = levels, norm = norm, cmap = cmap)
+        plt.contourf(r1, r1, V, levels = levels, norm = norm, cmap = cmap)
         plt.title(title)
         plt.colorbar()
         
         if show:
             plt.show()
+            
+            
+    def PlotCircle(radius: float) -> None:
+        '''
+        ## Input
+        Plots circle\n
+        radius - [float]
+        
+        ## Returns
+        None
+        '''
+        t = np.linspace(0, 2*np.pi, 100)
+        plt.plot(radius*np.cos(t), radius*np.sin(t))

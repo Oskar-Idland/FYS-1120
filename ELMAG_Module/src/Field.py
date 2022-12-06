@@ -37,7 +37,7 @@ class Field():
     Plots circle just using radius
         
     # See example code below:
-    
+
     ## Single Point Charge
         
     >>> L = 2
@@ -131,7 +131,7 @@ class Field():
     >>> circle_planes = ['xy']
     >>> rx, rz, Bx, Bz = Field.CalculateBfieldCircle(L, N, circle_currents, radii, plane, circle_planes)
     
-    >>> Field.PlotVector(rx, rz, Bx, Bz, 'stream', broken_streamlines=False, show = True, cmap = 'inferno', density = .5)     
+    >>> Field.PlotVector(rx, rz, Bx, Bz, 'stream', broken_streamlines=False, show = True, cmap = 'inferno', density = .5)    
     '''
     
     @staticmethod
@@ -567,7 +567,7 @@ class Field():
 
     @staticmethod
     @njit
-    def EfieldCircle(r: np.ndarray, q: float, rad: float, plane: str, eps = 8.854187817E-12, N = 100) -> np.ndarray:
+    def EfieldCircle(r: np.ndarray, q: float, rad: float, plane: str, eps = 8.854187817E-12, N = 200) -> np.ndarray:
         '''
         Calculates electric field from circular charge centered in origin\n
         
@@ -586,16 +586,14 @@ class Field():
         3D array
         '''
         ϵ = eps
-        
         E = np.zeros(3)
-        
-        if np.linalg.norm(r) < rad:
-            return np.array([0.0, 0.0, 0.0])
-        
-        else:
-            dq = q/N
+        dq = q/N
             
-            if plane == 'xy':
+        if plane == 'xy':
+            if np.linalg.norm(r) < rad and r[2] == 0:
+                return E
+                
+            else:
                 for i in range(N):
                     θ = 2*np.pi/N * i
                     r_q = rad * np.array([np.cos(θ), np.sin(θ), 0.0])
@@ -605,7 +603,12 @@ class Field():
                     
                 return E
 
-            elif plane == 'xz':
+
+        elif plane == 'xz':
+            if np.linalg.norm(r) < rad and r[1] == 0:
+                return E
+                
+            else:
                 for i in range(N):
                     θ = 2*np.pi/N * i
                     r_q = rad * np.array([np.cos(θ), 0.0, np.sin(θ)])
@@ -614,8 +617,12 @@ class Field():
                     E += dq/(4*np.pi*ϵ) * R/R_norm**3
                     
                 return E
-            
-            elif plane == 'yz':
+        
+        elif plane == 'yz':
+            if np.linalg.norm(r) < rad and r[0] == 0:
+                return E
+                
+            else:        
                 for i in range(N):
                     θ = 2*np.pi/N * i
                     r_q = rad * np.array([0.0, np.cos(θ), np.sin(θ)])
@@ -625,8 +632,8 @@ class Field():
                     
                 return E
 
-            else:
-                raise ValueError("Argument 'plane' must be either 'xy', 'xz', or 'yz'")
+        else:
+            raise ValueError("Argument 'plane' must be either 'xy', 'xz', or 'yz'")
             
     @classmethod
     def CalculateEfieldCircle(cls, L: float, N: int, circle_charges: list,  radii: list, plane: str, plane_circles: list, eps: float = 8.854187817E-12, n: int = 100) -> np.ndarray:
@@ -1179,8 +1186,8 @@ class Field():
         plt.figure(figsize = figsize)
         if equal:
             plt.axis('equal')
-        plt.contour(r1, r1, V, levels = levels, norm = norm, cmap = cmap)
-        plt.contourf(r1, r1, V, levels = levels, norm = norm, cmap = cmap)
+        plt.contour(r1, r2, V, levels = levels, norm = norm, cmap = cmap)
+        plt.contourf(r1, r2, V, levels = levels, norm = norm, cmap = cmap)
         plt.title(title)
         plt.colorbar()
         
@@ -1198,4 +1205,4 @@ class Field():
         None
         '''
         t = np.linspace(0, 2*np.pi, 100)
-        plt.plot(radius*np.cos(t), radius*np.sin(t))
+        plt.plot(radius*np.cos(t), radius*np.sin(t))  

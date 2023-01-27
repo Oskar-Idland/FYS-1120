@@ -1,9 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-src/Field.py
-src/__init__.py
-src/ELMAG_FieldModule.egg-info/PKG-INFO
-src/ELMAG_FieldModule.egg-info/SOURCES.txt
-src/ELMAG_FieldModule.egg-info/dependency_links.txt
-src/ELMAG_FieldModule.egg-info/top_level.txt
